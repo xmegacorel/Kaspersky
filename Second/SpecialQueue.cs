@@ -32,7 +32,7 @@ namespace Second
         public T Pop()
         {
             _semaphore.WaitOne();
-            _cacheLock.EnterReadLock();
+            _cacheLock.EnterWriteLock();
             try
             {
                 if (_queue.Count > 0)
@@ -44,7 +44,7 @@ namespace Second
             }
             finally 
             {
-                _cacheLock.ExitReadLock();
+                _cacheLock.ExitWriteLock();
             }
             
         }
